@@ -13,6 +13,17 @@ const theme = {
       bold: "bold",
       headings: "bold"
     },
+    fontSizes: {
+      xxSmall: "0.5rem",
+      xSmall: "0.6rem",
+      small: "0.8rem",
+      medium: "1rem",
+      large: "1.13rem",
+      xLarge: "1.5rem",
+      xxLarge: "2rem",
+      larger: "1.2rem",
+      smaller: "0.8rem"
+    },
     width: {
       maxWidth: "1200px",
       width: "100%"

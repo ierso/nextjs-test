@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 
 import {
-  addTheme,
   mediaStylesPropTypes,
   withMediaStyles
 } from "../../../utils/style-utils";

@@ -5,8 +5,9 @@ import { Global, css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { ThemeProvider } from "emotion-theming";
 import emotionNormalize from "emotion-normalize";
-import { Copy, Title } from "../components/elements/typography";
-import { Flex, Display } from "../components/elements/layout";
+import { Copy, Title } from "../components/styled-elements/typography";
+import { Flex, Display } from "../components/styled-elements/layout";
+import { Text } from "../components/styled-elements/typography";
 
 class App extends Component {
   render() {
@@ -45,12 +46,12 @@ class App extends Component {
             </Copy>
           </Display>
 
-          <Copy>
+          <Text italic last={true}>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi sit
             fugiat atque consectetur eius doloribus, ad, aliquid nihil cum
             laboriosam impedit minus reprehenderit dicta a ducimus inventore
             quam pariatur provident?
-          </Copy>
+          </Text>
         </Flex>
 
         <FullPage>{this.props.children}</FullPage>

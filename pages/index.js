@@ -1,7 +1,7 @@
 import React from "react";
 import App from "../container/app";
 import Head from "next/head";
-import { Container } from "../components/elements/layout";
+import { Container } from "../components/styled-elements/layout";
 import cowsay from "cowsay-browser";
 import styled from "@emotion/styled";
 import { keyframes, css, Global } from "@emotion/core";

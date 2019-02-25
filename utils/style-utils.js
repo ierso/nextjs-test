@@ -2,18 +2,11 @@ import PropTypes from "prop-types";
 import theme from "./theme";
 import { css } from "@emotion/core";
 
-const { breakpoints } = theme.type;
+const { breakpoints, fontSizes } = theme.type;
 
 const mq = Object.keys(breakpoints).map(bp => {
   return `@media (min-width: ${breakpoints[bp]})`;
 });
-
-const addTheme = props => {
-  return {
-    ...props,
-    theme: props.theme ? { ...props.theme } : {}
-  };
-};
 
 /**
  * Accept string, trim, return terminated with a semicolon
@@ -40,6 +33,14 @@ const toCssString = val => {
 };
 
 /**
+ * Return strings as-is, coerce numbers to 'rem' (default '0rem')
+ */
+// prettier-ignore
+const toCssUnits = (val, units = 'rem') => {
+  return typeof val === 'string' ? val : typeof val === 'number' ? `${val}${units}` : '0rem';
+}
+
+/**
  * Helper to ensure that value is a (media) object
  */
 
@@ -51,6 +52,19 @@ const toMediaObj = val => {
   return {};
 };
 
+/**
+ * Deliver CSS 'padding' or 'margin' rules derived from passed in prop
+ * Numbers are assumed to be 'rem'
+ */
+const cssSpacing = (rule, value) => {
+  console.log(value);
+  console.log(typeof value);
+  if (typeof value === "number") value += "rem";
+  return css`
+    ${rule}: ${value};
+  `;
+};
+
 const mediaStylesPropTypes = {
   styles: PropTypes.oneOfType([
     PropTypes.string,
@@ -58,6 +72,32 @@ const mediaStylesPropTypes = {
     PropTypes.object
   ])
 };
+
+export function withFont(props) {
+  // prettier-ignore
+  let fontStyle = ['roman', 'italic', 'oblique'].find(style => style in props) || '';
+  if (fontStyle === "roman") fontStyle = "normal";
+
+  // prettier-ignore
+  const fontWeight =
+    ['light', 'lighter', 'normal', 'bold', 'bolder'].find(weight => weight in props) || '';
+
+  // prettier-ignore
+  const fontSize = props.size
+    ? toCssUnits(props.size)
+    : fontSizes[Object.keys(fontSizes).find(size => size in props)] || '1rem';
+
+  // prettier-ignore
+  return css`
+    ${props.inline && `display: inline;`}
+    ${props.underline && 'text-decoration: underline;'}
+    ${props.last && 'margin: 0;'}
+    font-size: ${fontSize}; 
+    font-style: ${fontStyle}; 
+    font-weight: ${fontWeight};
+    line-height: calc(${fontSize} * 1.5);
+  `
+}
 
 const withMediaStyles = ({ styles, theme }) => {
   if (Array.isArray(styles)) return styles;
@@ -76,4 +116,4 @@ const withMediaStyles = ({ styles, theme }) => {
   return [];
 };
 
-export { mq, addTheme, mediaStylesPropTypes, toMediaObj, withMediaStyles };
+export { cssSpacing, mediaStylesPropTypes, mq, toMediaObj, withMediaStyles };

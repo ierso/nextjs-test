@@ -1,6 +1,9 @@
+export { default as Text } from "./text";
+
 import theme from "../../../utils/theme";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
+import { mq } from "../../../utils/style-utils";
 
 const defaultSettings = props => css`
   margin: 0;
