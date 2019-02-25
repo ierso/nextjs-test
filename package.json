@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.7",
     "@emotion/styled": "^10.0.7",
+    "@rebass/grid": "^6.0.0-7",
     "babel-plugin-emotion": "^10.0.7",
     "cowsay-browser": "^1.1.8",
     "emotion-normalize": "^10.0.0",

@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "@emotion/styled";
 
 const Container = styled.div`
-  border: blue solid 4px;
   max-width: ${props => props.theme.type.width.maxWidth};
   width: ${props => props.theme.type.width.width};
   margin: 0 auto;

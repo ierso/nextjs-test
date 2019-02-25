@@ -18,11 +18,11 @@ const theme = {
       width: "100%"
     },
     breakpoints: {
-      mobileSm: "320px",
-      mobile: "375px",
-      mobileLg: "414px",
-      tablet: "768px",
-      desktop: "1024px"
+      xs: "320px",
+      sm: "375px",
+      md: "414px",
+      lg: "768px",
+      xlg: "1024px"
     }
   }
 };

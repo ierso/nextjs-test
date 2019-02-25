@@ -5,7 +5,8 @@ import { Global, css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { ThemeProvider } from "emotion-theming";
 import emotionNormalize from "emotion-normalize";
-import { Copy, Title } from "../components/elements/typography/title";
+import { Copy, Title } from "../components/elements/typography";
+import { Flex, Display } from "../components/elements/layout";
 
 class App extends Component {
   render() {
@@ -29,19 +30,29 @@ class App extends Component {
             Shevy with Emotion and React!
           </Title>
         </div>
+        <Flex
+          styles={{
+            xs: "flex-direction: column",
+            md: "flex-direction: row; color: hotpink"
+          }}
+        >
+          <Display hide={{ sm: true }} show={{ xs: true, lg: true }}>
+            <Copy>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi
+              sit fugiat atque consectetur eius doloribus, ad, aliquid nihil cum
+              laboriosam impedit minus reprehenderit dicta a ducimus inventore
+              quam pariatur provident?
+            </Copy>
+          </Display>
 
-        <Copy>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi sit
-          fugiat atque consectetur eius doloribus, ad, aliquid nihil cum
-          laboriosam impedit minus reprehenderit dicta a ducimus inventore quam
-          pariatur provident?
-        </Copy>
-        <Copy>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi sit
-          fugiat atque consectetur eius doloribus, ad, aliquid nihil cum
-          laboriosam impedit minus reprehenderit dicta a ducimus inventore quam
-          pariatur provident?
-        </Copy>
+          <Copy>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi sit
+            fugiat atque consectetur eius doloribus, ad, aliquid nihil cum
+            laboriosam impedit minus reprehenderit dicta a ducimus inventore
+            quam pariatur provident?
+          </Copy>
+        </Flex>
+
         <FullPage>{this.props.children}</FullPage>
       </ThemeProvider>
     );
