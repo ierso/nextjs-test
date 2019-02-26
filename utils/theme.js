@@ -1,5 +1,9 @@
 const theme = {
   type: {
+    baseFontSize: {
+      htmlSize: "62.5%",
+      bodySize: "1.6rem"
+    },
     colors: {
       primary: "hotpink"
     },
@@ -14,15 +18,23 @@ const theme = {
       headings: "bold"
     },
     fontSizes: {
-      xxSmall: "0.5rem",
-      xSmall: "0.6rem",
-      small: "0.8rem",
-      medium: "1rem",
-      large: "1.13rem",
-      xLarge: "1.5rem",
-      xxLarge: "2rem",
-      larger: "1.2rem",
-      smaller: "0.8rem"
+      xxSmall: "0.9rem",
+      xSmall: "1rem",
+      small: "1.3rem",
+      medium: "1.6rem",
+      large: "1.8rem",
+      xLarge: "2.4rem",
+      xxLarge: "3.2rem",
+      larger: "1.7rem",
+      smaller: "1.2rem"
+    },
+    headerSizes: {
+      h1: "4.209rem",
+      h2: "3.157rem",
+      h3: "2.369rem",
+      h4: "1.777rem",
+      h5: "1.333rem",
+      h6: "1rem"
     },
     width: {
       maxWidth: "1200px",
@@ -33,7 +45,7 @@ const theme = {
       sm: "375px",
       md: "414px",
       lg: "768px",
-      xlg: "1024px"
+      xl: "1024px"
     }
   }
 };

@@ -8,16 +8,18 @@ import {
   withFont,
   withMediaStyles
 } from "../../../utils/style-utils";
+import Header from "../../header";
 
 // prettier-ignore
 const getCss = props => css`
   color: ${props.color};
   line-height: ${props.lineHeight};
   ${props.margin !== undefined && cssSpacing('margin', props.margin)} 
-  ${withFont(props, 'text')}
+  ${withFont(props, 'heading')}
   ${withMediaStyles(props)}
 `
-const Text = styled.p`
+
+const Heading = styled.h1`
   ${props => getCss(props)};
 `;
 
@@ -28,4 +30,4 @@ const propTypes = {
   ...fontPropTypes
 };
 
-export default Text;
+export default Heading;

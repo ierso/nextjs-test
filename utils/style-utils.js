@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import theme from "./theme";
 import { css } from "@emotion/core";
 
-const { breakpoints, fontSizes } = theme.type;
+const { breakpoints, fontSizes, headerSizes } = theme.type;
 
 const mq = Object.keys(breakpoints).map(bp => {
   return `@media (min-width: ${breakpoints[bp]})`;
@@ -73,7 +73,35 @@ const mediaStylesPropTypes = {
   ])
 };
 
-export function withFont(props) {
+const fontPropTypes = {
+  inline: PropTypes.bool,
+
+  roman: PropTypes.bool,
+  italic: PropTypes.bool,
+  oblique: PropTypes.bool,
+
+  xxSmall: PropTypes.bool,
+  xSmall: PropTypes.bool,
+  small: PropTypes.bool,
+  medium: PropTypes.bool,
+  large: PropTypes.bool,
+  xLarge: PropTypes.bool,
+  xxLarge: PropTypes.bool,
+  larger: PropTypes.bool,
+  smaller: PropTypes.bool,
+
+  h1: PropTypes.bool,
+  h2: PropTypes.bool,
+  h3: PropTypes.bool,
+  h4: PropTypes.bool,
+  h5: PropTypes.bool,
+  h6: PropTypes.bool,
+
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
+export { fontPropTypes };
+
+export function withFont(props, type) {
   // prettier-ignore
   let fontStyle = ['roman', 'italic', 'oblique'].find(style => style in props) || '';
   if (fontStyle === "roman") fontStyle = "normal";
@@ -82,10 +110,21 @@ export function withFont(props) {
   const fontWeight =
     ['light', 'lighter', 'normal', 'bold', 'bolder'].find(weight => weight in props) || '';
 
-  // prettier-ignore
+  let themeSizes = {};
+
+  switch (type) {
+    case "heading":
+      themeSizes = headerSizes;
+      break;
+    case "text":
+      themeSizes = fontSizes;
+    default:
+      break;
+  }
+
   const fontSize = props.size
     ? toCssUnits(props.size)
-    : fontSizes[Object.keys(fontSizes).find(size => size in props)] || '1rem';
+    : themeSizes[Object.keys(themeSizes).find(size => size in props)] || "1rem";
 
   // prettier-ignore
   return css`

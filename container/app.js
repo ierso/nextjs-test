@@ -5,9 +5,8 @@ import { Global, css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { ThemeProvider } from "emotion-theming";
 import emotionNormalize from "emotion-normalize";
-import { Copy, Title } from "../components/styled-elements/typography";
 import { Flex, Display } from "../components/styled-elements/layout";
-import { Text } from "../components/styled-elements/typography";
+import { Heading, Text } from "../components/styled-elements/typography";
 
 class App extends Component {
   render() {
@@ -21,16 +20,15 @@ class App extends Component {
             *:after {
               box-sizing: border-box;
             }
-            h1 {
-              font-size: 16px;
+            html {
+              font-size: ${theme.type.baseFontSize.htmlSize};
+            }
+            body {
+              font-size: 1.4rem;
             }
           `}
         />
-        <div style={{ fontSize: "2em" }}>
-          <Title size="1.6" sizeDesktop="3.2">
-            Shevy with Emotion and React!
-          </Title>
-        </div>
+        <div style={{ fontSize: "2em" }} />
         <Flex
           styles={{
             xs: "flex-direction: column",
@@ -38,15 +36,16 @@ class App extends Component {
           }}
         >
           <Display hide={{ sm: true }} show={{ xs: true, lg: true }}>
-            <Copy>
+            <Heading as="h5" h5 last styles={{ xl: "color: blue;" }}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi
-              sit fugiat atque consectetur eius doloribus, ad, aliquid nihil cum
-              laboriosam impedit minus reprehenderit dicta a ducimus inventore
-              quam pariatur provident?
-            </Copy>
+              sit fugiat atque consectetur
+            </Heading>
           </Display>
-
-          <Text italic last={true}>
+          <Heading as="h2" h2 last>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi sit
+            fugiat atque consectetur
+          </Heading>
+          <Text last medium>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi sit
             fugiat atque consectetur eius doloribus, ad, aliquid nihil cum
             laboriosam impedit minus reprehenderit dicta a ducimus inventore
